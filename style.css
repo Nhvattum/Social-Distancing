@@ -1,0 +1,24 @@
+#container, #game {
+    border: 2px solid black;
+    margin: 5px;
+}
+
+#socialDistancing{
+    position: relative;
+    /* left: 110px;
+    top: 250px; */
+    margin-top: -400px;
+    margin-left: 105px;
+    width: 800px;
+    height: 150px;
+    border: 2px solid black;
+    text-align: center;
+    line-height: 75px;
+    font-size: 65px;
+    letter-spacing: .25em;
+}
+
+#game {
+    /* width: 1000px;
+    height: 600px; */
+}
