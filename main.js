@@ -44,13 +44,7 @@ let mask8 = new Character(968, 2, "blue", 30, 20);
 let mask9 = new Character(968, 578, "blue", 30, 20);
 let mask10 = new Character(325, 185, "blue", 30, 20);
 
-/* ------------- Detecting Edges --------------- */
-
-function playingGame() {
-    ctx.clearRect(0, 0, game.width, game.height);
-    console.log(player.x, player.y);
-    detectWalls();
-    // detectBox();
+function init(){
     player.render();
     virus1.render();
     virus2.render();
@@ -66,10 +60,19 @@ function playingGame() {
     mask8.render();
     mask9.render();
     mask10.render();
-    detectVirus1();
-    detectVirus2();
-    detectVirus3();
-    detectVirus4();
+}
+
+/* ------------- Game Play -------------------*/
+
+let gameLoop = setInterval(playingGame, 100);
+
+function playingGame() {
+    ctx.clearRect(0, 0, game.width, game.height);
+    console.log(player.x, player.y);
+    detectWalls();
+    // detectBox();
+    init();
+    detectCharacters();
     
     if (player.alive) {
         console.log("It's all good");
@@ -79,6 +82,8 @@ function playingGame() {
         endGame();
     }
 }
+
+/* ------------- Detecting Edges --------------- */
 
 function detectWalls() {
     if (player.x < 0) {
@@ -107,13 +112,31 @@ function detectWalls() {
 
 
 /* ------------- Detecting Characters ---------------- */
+
+function detectCharacters() {
+    detectVirus1();
+    detectVirus2();
+    detectVirus3();
+    detectVirus4();
+    collectMask1();
+    collectMask2();
+    collectMask3();
+    collectMask4();
+    collectMask5();
+    collectMask6();
+    collectMask7();
+    collectMask8();
+    collectMask9();
+    collectMask10();
+}
+
 function detectVirus1() {
     if (player.x + player.width > virus1.x
     && player.x < virus1.x + virus1.width
     && player.y < virus1.y + virus1.height
     && player.y + player.height > virus1.y) {
 
-    player.alive = false;
+        player.alive = false;
     }
 }
 
@@ -123,7 +146,7 @@ function detectVirus2() {
     && player.y < virus2.y + virus2.height
     && player.y + player.height > virus2.y) {
 
-    player.alive = false;
+        player.alive = false;
     }
 }
 
@@ -133,7 +156,7 @@ function detectVirus3() {
     && player.y < virus3.y + virus3.height
     && player.y + player.height > virus3.y) {
 
-    player.alive = false;
+        player.alive = false;
     }
 }
 
@@ -143,7 +166,157 @@ function detectVirus4() {
     && player.y < virus4.y + virus4.height
     && player.y + player.height > virus4.y) {
 
-    player.alive = false;
+        player.alive = false;
+    }
+}
+
+function collectMask1() {
+    if (player.x + player.width > mask1.x
+    && player.x < mask1.x + mask1.width
+    && player.y < mask1.y + mask1.height
+    && player.y + player.height > mask1.y) {
+    
+        console.log("MASK 1 collected!! 🤿")
+        // ctx.clearRect(mask1.x, mask1.y, mask1.width, mask1.height)
+        mask1.alive = false
+    }
+    if (mask1.alive === false) {
+        ctx.clearRect(mask1.x, mask1.y, mask1.width, mask1.height);
+    }
+}
+
+function collectMask2() {
+    if (player.x + player.width > mask2.x
+    && player.x < mask2.x + mask2.width
+    && player.y < mask2.y + mask2.height
+    && player.y + player.height > mask2.y) {
+    
+        console.log("MASK 2 collected!! 🤿")
+        // ctx.clearRect(mask2.x, mask2.y, mask2.width, mask2.height)
+        mask2.alive = false
+    }
+    if (mask2.alive === false) {
+        ctx.clearRect(mask2.x, mask2.y, mask2.width, mask2.height);
+    }
+}
+
+function collectMask3() {
+    if (player.x + player.width > mask3.x
+    && player.x < mask3.x + mask3.width
+    && player.y < mask3.y + mask3.height
+    && player.y + player.height > mask3.y) {
+    
+        console.log("MASK 3 collected!! 🤿")
+        // ctx.clearRect(mask3.x, mask3.y, mask3.width, mask3.height)
+        mask3.alive = false
+    }
+    if (mask3.alive === false) {
+        ctx.clearRect(mask3.x, mask3.y, mask3.width, mask3.height);
+    }
+}
+
+function collectMask4() {
+    if (player.x + player.width > mask4.x
+    && player.x < mask4.x + mask4.width
+    && player.y < mask4.y + mask4.height
+    && player.y + player.height > mask4.y) {
+    
+        console.log("MASK 4 collected!! 🤿")
+        // ctx.clearRect(mask4.x, mask4.y, mask4.width, mask4.height)
+        mask4.alive = false
+    }
+    if (mask4.alive === false) {
+        ctx.clearRect(mask4.x, mask4.y, mask4.width, mask4.height);
+    }
+}
+
+function collectMask5() {
+    if (player.x + player.width > mask5.x
+    && player.x < mask5.x + mask5.width
+    && player.y < mask5.y + mask5.height
+    && player.y + player.height > mask5.y) {
+    
+        console.log("MASK 5 collected!! 🤿")
+        // ctx.clearRect(mask5.x, mask5.y, mask5.width, mask5.height)
+        mask5.alive = false
+    }
+    if (mask5.alive === false) {
+        ctx.clearRect(mask5.x, mask5.y, mask5.width, mask5.height);
+    }
+}
+
+function collectMask6() {
+    if (player.x + player.width > mask6.x
+    && player.x < mask6.x + mask6.width
+    && player.y < mask6.y + mask6.height
+    && player.y + player.height > mask6.y) {
+    
+        console.log("MASK 6 collected!! 🤿")
+        // ctx.clearRect(mask6.x, mask6.y, mask6.width, mask6.height)
+        mask6.alive = false
+    }
+    if (mask6.alive === false) {
+        ctx.clearRect(mask6.x, mask6.y, mask6.width, mask6.height);
+    }
+}
+
+function collectMask7() {
+    if (player.x + player.width > mask7.x
+    && player.x < mask7.x + mask7.width
+    && player.y < mask7.y + mask7.height
+    && player.y + player.height > mask7.y) {
+    
+        console.log("MASK 7 collected!! 🤿")
+        // ctx.clearRect(mask7.x, mask7.y, mask7.width, mask7.height)
+        mask7.alive = false
+    }
+    if (mask7.alive === false) {
+        ctx.clearRect(mask7.x, mask7.y, mask7.width, mask7.height);
+    }
+}
+
+function collectMask8() {
+    if (player.x + player.width > mask8.x
+    && player.x < mask8.x + mask8.width
+    && player.y < mask8.y + mask8.height
+    && player.y + player.height > mask8.y) {
+    
+        console.log("MASK 8 collected!! 🤿")
+        // ctx.clearRect(mask8.x, mask8.y, mask8.width, mask8.height)
+        mask8.alive = false
+    }
+    if (mask8.alive === false) {
+        ctx.clearRect(mask8.x, mask8.y, mask8.width, mask8.height);
+    }
+}
+
+function collectMask9() {
+    if (player.x + player.width > mask9.x
+    && player.x < mask9.x + mask9.width
+    && player.y < mask9.y + mask9.height
+    && player.y + player.height > mask9.y) {
+    
+        console.log("MASK 9 collected!! 🤿")
+        // ctx.clearRect(mask9.x, mask9.y, mask9.width, mask9.height)
+        mask9.alive = false
+    }
+    if (mask9.alive === false) {
+        ctx.clearRect(mask9.x, mask9.y, mask9.width, mask9.height);
+    }
+}
+
+function collectMask10() {
+    if (player.x + player.width > mask10.x
+    && player.x < mask10.x + mask10.width
+    && player.y < mask10.y + mask10.height
+    && player.y + player.height > mask10.y) {
+    
+        console.log("MASK 10 collected!! 🤿")
+        // ctx.clearRect(mask10.x, mask10.y, mask10.width, mask10.height)
+        mask10.alive = false
+    }
+    if (mask10.alive === false) {
+        ctx.clearRect(mask10.x, mask10.y, mask10.width, mask10.height);
     }
 }
 
@@ -152,7 +325,7 @@ function endGame() {
     console.log('It is finished')
 }
 
-let gameLoop = setInterval(playingGame, 100);
+
 
 /* ------------- Moving Player ---------------- */
 
