@@ -44,11 +44,13 @@ let mask8 = new Character(968, 2, "blue", 30, 20);
 let mask9 = new Character(968, 578, "blue", 30, 20);
 let mask10 = new Character(325, 185, "blue", 30, 20);
 
-/* ------------- Game Loop Stuff --------------- */
+/* ------------- Detecting Edges --------------- */
 
 function playingGame() {
     ctx.clearRect(0, 0, game.width, game.height);
+    console.log(player.x, player.y);
     detectWalls();
+    // detectBox();
     player.render();
     virus1.render();
     virus2.render();
@@ -64,6 +66,10 @@ function playingGame() {
     mask8.render();
     mask9.render();
     mask10.render();
+    detectVirus1();
+    detectVirus2();
+    detectVirus3();
+    detectVirus4();
     
     if (player.alive) {
         console.log("It's all good");
@@ -75,16 +81,69 @@ function playingGame() {
 }
 
 function detectWalls() {
-    if (player.x > 0
-        && player.x + player.width < 1000
-        && player.y > 0
-        && player.y + player.height < 600
-        ) {
+    if (player.x < 0) {
+        player.x = 0;
+        console.log("Outside the border");
+    } else if (player.x + player.width > 1000) {
+        player.x = 1000 - player.width;
+        console.log("Outside the border");
+    } else if (player.y < 0) {
+        player.y = 0;
+        console.log("Outside the border");
+    } else if (player.y + player.height > 600) {
+        player.y = 560;
+        console.log("Outside the border");
+    }
+}
 
-            // console.log(player.alive)
-    } else {
+// function detectBox() {
+//     if (player.x >= 0 && player.x <= 59) {
 
-        console.log(player.alive);
+//     }
+//         && player.y >= 171
+//         && player.y <=
+//         }
+// }
+
+
+/* ------------- Detecting Characters ---------------- */
+function detectVirus1() {
+    if (player.x + player.width > virus1.x
+    && player.x < virus1.x + virus1.width
+    && player.y < virus1.y + virus1.height
+    && player.y + player.height > virus1.y) {
+
+    player.alive = false;
+    }
+}
+
+function detectVirus2() {
+    if (player.x + player.width > virus2.x
+    && player.x < virus2.x + virus2.width
+    && player.y < virus2.y + virus2.height
+    && player.y + player.height > virus2.y) {
+
+    player.alive = false;
+    }
+}
+
+function detectVirus3() {
+    if (player.x + player.width > virus3.x
+    && player.x < virus3.x + virus3.width
+    && player.y < virus3.y + virus3.height
+    && player.y + player.height > virus3.y) {
+
+    player.alive = false;
+    }
+}
+
+function detectVirus4() {
+    if (player.x + player.width > virus4.x
+    && player.x < virus4.x + virus4.width
+    && player.y < virus4.y + virus4.height
+    && player.y + player.height > virus4.y) {
+
+    player.alive = false;
     }
 }
 
@@ -93,7 +152,7 @@ function endGame() {
     console.log('It is finished')
 }
 
-let gameLoop = setInterval(playingGame, 60);
+let gameLoop = setInterval(playingGame, 100);
 
 /* ------------- Moving Player ---------------- */
 
@@ -119,4 +178,3 @@ function movePlayer(e) {
             break;
     }
 }
-
