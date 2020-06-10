@@ -23,12 +23,15 @@ function Character(x, y, color, width, height) {
     }
 }
 let player = new Character(475, 171, "hotpink", 40, 40);
+
 // will travel up and down
 let virus1 = new Character(45, 0, "green", 50, 50);
 let virus2 = new Character(905, 550, "green", 50, 50);
+
 // will travel left and right
 let virus3 = new Character(472, 81, "green", 50, 50);
 let virus4 = new Character(472, 450, "green", 50, 50);
+
 // face masks (WON'T BE ABLE TO MOVE)
 let mask1 = new Character(2, 2, "blue", 30, 20);
 let mask2 = new Character(600, 50, "blue", 30, 20);
@@ -44,6 +47,8 @@ let mask10 = new Character(325, 185, "blue", 30, 20);
 /* ------------- Game Loop Stuff --------------- */
 
 function playingGame() {
+    ctx.clearRect(0, 0, game.width, game.height);
+    detectWalls();
     player.render();
     virus1.render();
     virus2.render();
@@ -69,6 +74,20 @@ function playingGame() {
     }
 }
 
+function detectWalls() {
+    if (player.x > 0
+        && player.x + player.width < 1000
+        && player.y > 0
+        && player.y + player.height < 600
+        ) {
+
+            // console.log(player.alive)
+    } else {
+
+        console.log(player.alive);
+    }
+}
+
 function endGame() {
     clearInterval(gameLoop);
     console.log('It is finished')
@@ -78,23 +97,26 @@ let gameLoop = setInterval(playingGame, 60);
 
 /* ------------- Moving Player ---------------- */
 
-const movementHandler = (e) => {
+document.addEventListener("keydown", movePlayer);
+
+function movePlayer(e) {
     switch(e.key) {
         case "w":
-            //hero.y decrement
-            hero.y-=3;
+            //player.y decrement
+            player.y-=3;
             break;
         case "d":
-            //hero.x increment
-            hero.x+=3;
+            //player.x increment
+            player.x+=3;
             break;
         case "s":
-            //hero.y increment
-            hero.y+=3;
+            //player.y increment
+            player.y+=3;
             break;
         case "a":
-            //hero.x decrement
-            hero.x-=3;
+            //player.x decrement
+            player.x-=3;
             break;
     }
 }
+
