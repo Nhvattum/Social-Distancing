@@ -26,6 +26,7 @@ let player = new Character(475, 171, "hotpink", 40, 40);
 
 // will travel up and down
 let virus1 = new Character(45, 0, "green", 50, 50);
+
 let virus2 = new Character(905, 550, "green", 50, 50);
 
 // will travel left and right
@@ -43,6 +44,7 @@ let mask7 = new Character(2, 578, "blue", 30, 20);
 let mask8 = new Character(968, 2, "blue", 30, 20);
 let mask9 = new Character(968, 578, "blue", 30, 20);
 let mask10 = new Character(325, 185, "blue", 30, 20);
+
 
 function init(){
     player.render();
@@ -70,7 +72,7 @@ function playingGame() {
     ctx.clearRect(0, 0, game.width, game.height);
     console.log(player.x, player.y);
     init();
-    
+    moveVirus();
     
     if (player.alive) {
         console.log("It's all good");
@@ -340,7 +342,7 @@ function endGame() {
 
 
 
-/* ------------- Moving Player ---------------- */
+/* ------------- Player Movement ---------------- */
 
 document.addEventListener("keydown", movePlayer);
 
@@ -363,4 +365,40 @@ function movePlayer(e) {
             player.x-=3;
             break;
     }
+}
+
+/* ----------- Vurus Movement --------------- */
+let virus1Speed;
+let virus2Speed;
+let virus3Speed = 10;
+let virus4Speed = -10;
+
+function moveVirus() {
+    if (virus1.y <= 0) {
+        virus1Speed = 5;
+    } else if (virus1.y >= 550) {
+        virus1Speed = -5;
+    }
+    virus1.y += virus1Speed;
+
+    if (virus2.y <= 0) {
+        virus2Speed = 5;
+    } else if (virus2.y >= 550) {
+        virus2Speed = -5;
+    }
+    virus2.y += virus2Speed;
+
+    if (virus3.x <= 0) {
+        virus3Speed = 10;
+    } else if (virus3.x >= 950) {
+        virus3Speed = -10;
+    }
+    virus3.x += virus3Speed;
+
+    if (virus4.x <= 0) {
+        virus4Speed = 10;
+    } else if (virus4.x >= 950) {
+        virus4Speed = -10;
+    }
+    virus4.x += virus4Speed;
 }
