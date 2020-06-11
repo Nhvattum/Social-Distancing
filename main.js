@@ -64,20 +64,19 @@ function init(){
 
 /* ------------- Game Play -------------------*/
 
-let gameLoop = setInterval(playingGame, 100);
+let gameLoop = setInterval(playingGame, 60);
 
 function playingGame() {
     ctx.clearRect(0, 0, game.width, game.height);
     console.log(player.x, player.y);
-    detectWalls();
-    // detectBox();
     init();
-    detectCharacters();
+    
     
     if (player.alive) {
         console.log("It's all good");
-        // TODO: make this
-        // detectHit()
+        detectCharacters();
+        detectWalls();
+        detectBox();
     } else {
         endGame();
     }
@@ -101,15 +100,39 @@ function detectWalls() {
     }
 }
 
-// function detectBox() {
-//     if (player.x >= 0 && player.x <= 59) {
+function detectBox() {
+    // checking top of box
+    if (player.x < 896
+        && player.x > 62
+        && player.y > 171
+        && player.y < 300) {
+            player.y = 171;
+            console.log("crossed TOP BOX border");
 
-//     }
-//         && player.y >= 171
-//         && player.y <=
-//         }
-// }
+        // checking bottom of box
+    } else if (player.x < 896
+        && player.x > 62
+        && player.y < 365
+        && player.y > 300) {
+            player.y = 365;
+            console.log("crossed BOTTOM BOX border")
 
+        // checking left side of box
+    } else if (player.y > 171
+        && player.y < 360
+        && player.x > 59
+        && player.x < 500) {
+            player.x = 59;
+            console.log("crossed LEFT BOX border")
+
+        // checking right side of box
+    } else if (player.y > 171
+        && player.y < 360
+        && player.x < 900
+        && player.x > 500) {
+            player.x = 900
+    }
+}
 
 /* ------------- Detecting Characters ---------------- */
 
@@ -177,7 +200,6 @@ function collectMask1() {
     && player.y + player.height > mask1.y) {
     
         console.log("MASK 1 collected!! 🤿")
-        // ctx.clearRect(mask1.x, mask1.y, mask1.width, mask1.height)
         mask1.alive = false
     }
     if (mask1.alive === false) {
@@ -192,7 +214,6 @@ function collectMask2() {
     && player.y + player.height > mask2.y) {
     
         console.log("MASK 2 collected!! 🤿")
-        // ctx.clearRect(mask2.x, mask2.y, mask2.width, mask2.height)
         mask2.alive = false
     }
     if (mask2.alive === false) {
@@ -207,7 +228,6 @@ function collectMask3() {
     && player.y + player.height > mask3.y) {
     
         console.log("MASK 3 collected!! 🤿")
-        // ctx.clearRect(mask3.x, mask3.y, mask3.width, mask3.height)
         mask3.alive = false
     }
     if (mask3.alive === false) {
@@ -222,7 +242,6 @@ function collectMask4() {
     && player.y + player.height > mask4.y) {
     
         console.log("MASK 4 collected!! 🤿")
-        // ctx.clearRect(mask4.x, mask4.y, mask4.width, mask4.height)
         mask4.alive = false
     }
     if (mask4.alive === false) {
@@ -237,7 +256,6 @@ function collectMask5() {
     && player.y + player.height > mask5.y) {
     
         console.log("MASK 5 collected!! 🤿")
-        // ctx.clearRect(mask5.x, mask5.y, mask5.width, mask5.height)
         mask5.alive = false
     }
     if (mask5.alive === false) {
@@ -252,7 +270,6 @@ function collectMask6() {
     && player.y + player.height > mask6.y) {
     
         console.log("MASK 6 collected!! 🤿")
-        // ctx.clearRect(mask6.x, mask6.y, mask6.width, mask6.height)
         mask6.alive = false
     }
     if (mask6.alive === false) {
@@ -267,7 +284,6 @@ function collectMask7() {
     && player.y + player.height > mask7.y) {
     
         console.log("MASK 7 collected!! 🤿")
-        // ctx.clearRect(mask7.x, mask7.y, mask7.width, mask7.height)
         mask7.alive = false
     }
     if (mask7.alive === false) {
@@ -282,7 +298,6 @@ function collectMask8() {
     && player.y + player.height > mask8.y) {
     
         console.log("MASK 8 collected!! 🤿")
-        // ctx.clearRect(mask8.x, mask8.y, mask8.width, mask8.height)
         mask8.alive = false
     }
     if (mask8.alive === false) {
@@ -297,7 +312,6 @@ function collectMask9() {
     && player.y + player.height > mask9.y) {
     
         console.log("MASK 9 collected!! 🤿")
-        // ctx.clearRect(mask9.x, mask9.y, mask9.width, mask9.height)
         mask9.alive = false
     }
     if (mask9.alive === false) {
@@ -312,7 +326,6 @@ function collectMask10() {
     && player.y + player.height > mask10.y) {
     
         console.log("MASK 10 collected!! 🤿")
-        // ctx.clearRect(mask10.x, mask10.y, mask10.width, mask10.height)
         mask10.alive = false
     }
     if (mask10.alive === false) {
