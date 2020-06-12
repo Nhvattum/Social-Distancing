@@ -23,8 +23,6 @@ maskImg.src = "img/mask1.png";
 
 let menuMusic = document.createElement("audio");
 menuMusic.src = "audio/menu.mp3";
-menuMusic.allow = "autoplay;"
-// menuMusic.muted = "none"
 
 let gameMusic = document.createElement("audio");
 gameMusic.src = "audio/game.wav";
@@ -128,11 +126,8 @@ function clickStart(){
     start.textContent = "GOOD LUCK!";
 }
 
-
-
 function playingGame() {
     if (gameActive) {
-        // menuMusic.pause();
         gameMusic.play();
         ctx.clearRect(0, 0, game.width, game.height);
         // console.log(player.x, player.y);
@@ -474,6 +469,7 @@ function gameWon() {
         console.log("You Win!")
         gameMusic.pause();
         applauseSound.play();
+        menuMusic.play();
         scoreBox.textContent = "Player WINS!"
     }
 }
