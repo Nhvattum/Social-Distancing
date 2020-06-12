@@ -9,7 +9,7 @@ let score = 000
 let start = document.getElementById("startGame")
 let ctx = game.getContext("2d");
 
-// Character images
+/* --------------- Character images ----------------- */
 let playerImg = new Image();
 playerImg.src = "img/player1.png";
 
@@ -20,7 +20,6 @@ let maskImg = new Image();
 maskImg.src = "img/mask1.png";
 
 /* ------------------ Audio -------------------- */
-
 let menuMusic = document.createElement("audio");
 menuMusic.src = "audio/menu.mp3";
 
@@ -114,8 +113,6 @@ function init(){
 }
 
 /* ------------- Game Play -------------------*/
-
-
 let gameLoop = setInterval(playingGame, 60);
 let gameActive  = false;
 
@@ -142,13 +139,12 @@ function playingGame() {
             gameWon();
         } else {
             endGame();
+            gameActive = false;
         }
-    } else {
     }
 }
 
 /* ------------- Detecting Edges --------------- */
-
 function detectWalls() {
     if (player.x < 0) {
         player.x = 0;
@@ -200,7 +196,6 @@ function detectBox() {
 }
 
 /* ------------- Detecting Characters ---------------- */
-
 function detectCharacters() {
     detectVirus1();
     detectVirus2();
@@ -392,7 +387,6 @@ function collectMask10() {
 }
 
 /* ------------- Player Movement ---------------- */
-
 document.addEventListener("keydown", movePlayer);
 
 function movePlayer(e) {
@@ -419,57 +413,105 @@ function movePlayer(e) {
 /* ----------- Vurus Movement --------------- */
 let virus1Speed;
 let virus2Speed;
-let virus3Speed = 15;
-let virus4Speed = -15;
+let virus3Speed = 20;
+let virus4Speed = -20;
 
 function moveVirus() {
     if (virus1.y <= 0) {
-        virus1Speed = 9;
+        virus1Speed = 12;
     } else if (virus1.y >= 550) {
-        virus1Speed = -9;
+        virus1Speed = -12;
     }
     virus1.y += virus1Speed;
 
     if (virus2.y <= 0) {
-        virus2Speed = 9;
+        virus2Speed = 12;
     } else if (virus2.y >= 550) {
-        virus2Speed = -9;
+        virus2Speed = -12;
     }
     virus2.y += virus2Speed;
 
     if (virus3.x <= 0) {
-        virus3Speed = 15;
+        virus3Speed = 20;
     } else if (virus3.x >= 950) {
-        virus3Speed = -15;
+        virus3Speed = -20;
     }
     virus3.x += virus3Speed;
 
     if (virus4.x <= 0) {
-        virus4Speed = 15;
+        virus4Speed = 20;
     } else if (virus4.x >= 950) {
-        virus4Speed = -15;
+        virus4Speed = -20;
     }
     virus4.x += virus4Speed;
 }
 
 /* ---------- Win/Lose Conditions ----------- */
-
 function endGame() {
     clearInterval(gameLoop);
-    console.log('You died!')
+    console.log('You died!');
     gameMusic.pause();
     gameOverSound.play();
     menuMusic.play();
-    scoreBox.textContent = "INFECTED"
+    scoreBox.textContent = "INFECTED";
+    start.textContent = "RESTART";
 }
 
 function gameWon() {
     if (player.alive && score == 100){
         clearInterval(gameLoop);
-        console.log("You Win!")
+        console.log("You Win!");
         gameMusic.pause();
         applauseSound.play();
         menuMusic.play();
-        scoreBox.textContent = "Player WINS!"
+        scoreBox.textContent = "Player WINS!";
+        gameActive = false;
+        start.textContent = "RESTART";
+    }
+}
+start.addEventListener("click", restart);
+
+function restart() {
+    if (scoreBox.textContent == "INFECTED"
+        || scoreBox.textContent == "Player WINS!") {
+            ctx.clearRect(0, 0, game.width, game.height);
+            scoreBox.textContent = "Score: 000";
+            score = 0;
+            player.alive = true;
+            player.x = 475;
+            player.y = 171;
+            mask1.alive = true;
+            mask1.x = 2;
+            mask1.y = 2;
+            mask2.alive = true;
+            mask2.x = 600; 
+            mask2.y = 50;
+            mask3.alive = true;
+            mask3.x = 325;
+            mask3.y = 525;
+            mask4.alive = true;
+            mask4.x = 968;
+            mask4.y = 280;
+            mask5.alive = true;
+            mask5.x = 600;
+            mask5.y = 375;
+            mask6.alive = true;
+            mask6.x = 2;
+            mask6.y = 280;
+            mask7.alive = true;
+            mask7.x = 2;
+            mask7.y = 578;
+            mask8.alive = true;
+            mask8.x = 968;
+            mask8.y = 2;
+            mask9.alive = true;
+            mask9.x = 968;
+            mask9.y = 578;
+            mask10.alive = true;
+            mask10.x = 325;
+            mask10.y = 185;
+            clickStart();
+            gameLoop = setInterval(playingGame, 60);
+            menuMusic.pause();
     }
 }
