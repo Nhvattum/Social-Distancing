@@ -9,41 +9,52 @@ let score = 000
 let start = document.getElementById("startGame")
 let ctx = game.getContext("2d");
 
+let playerImg = new Image()
+playerImg.src = "img/player1.png"
+
+let virusImg = new Image()
+virusImg.src = "img/virus.png"
+
+let maskImg = new Image()
+maskImg.src = "img/mask1.png"
+
 /* --------------- Characters ------------------- */
-function Character(x, y, color, width, height) {
+function Character(x, y, width, height, img) {
     this.x = x;
     this.y = y;
-    this.color = color;
+    // this.color = color;
     this.width = width;
     this.height = height;
     this.alive = true;
+    this.img = img;
     this.render = function() {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height)
+        // ctx.fillStyle = this.color;
+        // ctx.fillRect(this.x, this.y, this.width, this.height)
+        ctx.drawImage(this.img, this.x, this.y)
     }
 }
 
-let player = new Character(475, 171, "hotpink", 40, 40);
+let player = new Character(475, 171, 40, 40, playerImg);
 
 // will travel up and down
-let virus1 = new Character(45, 0, "green", 50, 50);
-let virus2 = new Character(905, 550, "green", 50, 50);
+let virus1 = new Character(45, 0, 50, 50, virusImg);
+let virus2 = new Character(905, 550, 50, 50, virusImg);
 
 // will travel left and right
-let virus3 = new Character(472, 81, "green", 50, 50);
-let virus4 = new Character(472, 450, "green", 50, 50);
+let virus3 = new Character(472, 81, 50, 50, virusImg);
+let virus4 = new Character(472, 450, 50, 50, virusImg);
 
 // face masks (WON'T BE ABLE TO MOVE)
-let mask1 = new Character(2, 2, "blue", 30, 20);
-let mask2 = new Character(600, 50, "blue", 30, 20);
-let mask3 = new Character(325, 525, "blue", 30, 20);
-let mask4 = new Character(968, 280, "blue", 30, 20);
-let mask5 = new Character(600, 375, "blue", 30, 20);
-let mask6 = new Character(2, 280, "blue", 30, 20);
-let mask7 = new Character(2, 578, "blue", 30, 20);
-let mask8 = new Character(968, 2, "blue", 30, 20);
-let mask9 = new Character(968, 578, "blue", 30, 20);
-let mask10 = new Character(325, 185, "blue", 30, 20);
+let mask1 = new Character(2, 2, 30, 20, maskImg);
+let mask2 = new Character(600, 50, 30, 20, maskImg);
+let mask3 = new Character(325, 525, 30, 20, maskImg);
+let mask4 = new Character(968, 280, 30, 20, maskImg);
+let mask5 = new Character(600, 375, 30, 20, maskImg);
+let mask6 = new Character(2, 280, 30, 20, maskImg);
+let mask7 = new Character(2, 578, 30, 20, maskImg);
+let mask8 = new Character(968, 2, 30, 20, maskImg);
+let mask9 = new Character(968, 578, 30, 20, maskImg);
+let mask10 = new Character(325, 185, 30, 20, maskImg);
 
 
 function init(){
