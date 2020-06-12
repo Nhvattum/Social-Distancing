@@ -10,22 +10,33 @@ let start = document.getElementById("startGame")
 let ctx = game.getContext("2d");
 
 // Character images
-let playerImg = new Image()
-playerImg.src = "img/player1.png"
+let playerImg = new Image();
+playerImg.src = "img/player1.png";
 
-let virusImg = new Image()
-virusImg.src = "img/virus.png"
+let virusImg = new Image();
+virusImg.src = "img/virus.png";
 
-let maskImg = new Image()
-maskImg.src = "img/mask1.png"
+let maskImg = new Image();
+maskImg.src = "img/mask1.png";
 
-// Audio
+/* ------------------ Audio -------------------- */
 
 let menuMusic = document.createElement("audio");
-menuMusic.src = "audio/menu.ogg"
+menuMusic.src = "audio/menu.mp3";
+menuMusic.allow = "autoplay;"
+// menuMusic.muted = "none"
 
-let gameMusic = document.createElement("audio")
-gameMusic.src = "audio/game.wav"
+let gameMusic = document.createElement("audio");
+gameMusic.src = "audio/game.wav";
+
+let maskSound = document.createElement("audio");
+maskSound.src = "audio/maskSound.wav";
+
+let applauseSound = document.createElement("audio");
+applauseSound.src = "audio/applause.wav"
+
+let gameOverSound = document.createElement("audio");
+gameOverSound.src = "audio/gameOver.wav"
 
 /* --------------- Characters ------------------- */
 function Character(x, y, width, height, img) {
@@ -117,9 +128,11 @@ function clickStart(){
     start.textContent = "GOOD LUCK!";
 }
 
+
+
 function playingGame() {
-    
     if (gameActive) {
+        // menuMusic.pause();
         gameMusic.play();
         ctx.clearRect(0, 0, game.width, game.height);
         // console.log(player.x, player.y);
@@ -135,6 +148,7 @@ function playingGame() {
         } else {
             endGame();
         }
+    } else {
     }
 }
 
@@ -258,6 +272,7 @@ function collectMask1() {
     
         console.log("MASK 1 collected!! 🤿")
         mask1.alive = false
+        maskSound.play();
         score = score + 10
     }
 }
@@ -271,6 +286,7 @@ function collectMask2() {
 
         console.log("MASK 2 collected!! 🤿")
         mask2.alive = false
+        maskSound.play();
         score = score + 10
     }
 }
@@ -283,6 +299,7 @@ function collectMask3() {
     
         console.log("MASK 3 collected!! 🤿")
         mask3.alive = false
+        maskSound.play();
         score = score + 10
     }
 }
@@ -295,6 +312,7 @@ function collectMask4() {
     
         console.log("MASK 4 collected!! 🤿")
         mask4.alive = false
+        maskSound.play();
         score = score + 10
     }
 }
@@ -307,6 +325,7 @@ function collectMask5() {
     
         console.log("MASK 5 collected!! 🤿")
         mask5.alive = false
+        maskSound.play();
         score = score + 10
     }
 }
@@ -319,6 +338,7 @@ function collectMask6() {
     
         console.log("MASK 6 collected!! 🤿")
         mask6.alive = false
+        maskSound.play();
         score = score + 10
     }
 }
@@ -331,6 +351,7 @@ function collectMask7() {
     
         console.log("MASK 7 collected!! 🤿")
         mask7.alive = false
+        maskSound.play();
         score = score + 10
     }
 }
@@ -343,6 +364,7 @@ function collectMask8() {
     
         console.log("MASK 8 collected!! 🤿")
         mask8.alive = false
+        maskSound.play();
         score = score + 10
     }
 }
@@ -355,6 +377,7 @@ function collectMask9() {
     
         console.log("MASK 9 collected!! 🤿")
         mask9.alive = false
+        maskSound.play();
         score = score + 10;
     }
 }
@@ -367,6 +390,7 @@ function collectMask10() {
     
         console.log("MASK 10 collected!! 🤿")
         mask10.alive = false
+        maskSound.play();
         score = score + 10;
     }
 
@@ -438,6 +462,9 @@ function moveVirus() {
 function endGame() {
     clearInterval(gameLoop);
     console.log('You died!')
+    gameMusic.pause();
+    gameOverSound.play();
+    menuMusic.play();
     scoreBox.textContent = "INFECTED"
 }
 
@@ -445,6 +472,8 @@ function gameWon() {
     if (player.alive && score == 100){
         clearInterval(gameLoop);
         console.log("You Win!")
+        gameMusic.pause();
+        applauseSound.play();
         scoreBox.textContent = "Player WINS!"
     }
 }
