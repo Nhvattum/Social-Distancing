@@ -125,7 +125,7 @@ function clickStart(){
 
 function playingGame() {
     if (gameActive) {
-        gameMusic.play();
+        // gameMusic.play();
         ctx.clearRect(0, 0, game.width, game.height);
         // console.log(player.x, player.y);
         init();
@@ -163,16 +163,16 @@ function detectWalls() {
 
 function detectBox() {
     // checking top of box
-    if (player.x < 896
-        && player.x > 62
+    if (player.x < 893
+        && player.x > 65
         && player.y > 171
         && player.y < 300) {
             player.y = 171;
             console.log("crossed TOP BOX border");
 
         // checking bottom of box
-    } else if (player.x < 896
-        && player.x > 62
+    } else if (player.x < 893
+        && player.x > 65
         && player.y < 365
         && player.y > 300) {
             player.y = 365;
