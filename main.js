@@ -9,6 +9,7 @@ let score = 000
 let start = document.getElementById("startGame")
 let ctx = game.getContext("2d");
 
+// Character images
 let playerImg = new Image()
 playerImg.src = "img/player1.png"
 
@@ -17,6 +18,14 @@ virusImg.src = "img/virus.png"
 
 let maskImg = new Image()
 maskImg.src = "img/mask1.png"
+
+// Audio
+
+let menuMusic = document.createElement("audio");
+menuMusic.src = "audio/menu.ogg"
+
+let gameMusic = document.createElement("audio")
+gameMusic.src = "audio/game.wav"
 
 /* --------------- Characters ------------------- */
 function Character(x, y, width, height, img) {
@@ -97,6 +106,7 @@ function init(){
 
 /* ------------- Game Play -------------------*/
 
+
 let gameLoop = setInterval(playingGame, 60);
 let gameActive  = false;
 
@@ -108,7 +118,9 @@ function clickStart(){
 }
 
 function playingGame() {
+    
     if (gameActive) {
+        gameMusic.play();
         ctx.clearRect(0, 0, game.width, game.height);
         // console.log(player.x, player.y);
         init();
