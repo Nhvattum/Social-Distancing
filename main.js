@@ -125,7 +125,7 @@ function clickStart(){
 
 function playingGame() {
     if (gameActive) {
-        // gameMusic.play();
+        gameMusic.play();
         ctx.clearRect(0, 0, game.width, game.height);
         // console.log(player.x, player.y);
         init();
