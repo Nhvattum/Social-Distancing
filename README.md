@@ -14,6 +14,10 @@
 ![Wireframe](image/Wireframe) 
 
 
+## Technology Used
+Everything in this game was coded with HTML, CSS, and JavaScript with the game actually being played on a canvas.
+
+
 ## Sources
 ### Images
 - ![Player Image](img/player1.png) - I found the "Pixel-Man" image on OpenGameArt.org.  The image originated at inverted-games.com.
@@ -34,6 +38,7 @@
 - I created the gameover sound using Logic Pro X.
 
 ### Other Sources
+- The Canvas Crawler game that we built in class was a big resource, and I referenced it a lot when writing the basic structure of this game.
 - Pete, Yashoma, and other students were great resources in helping me write code for and debug:
     - Getting my audio to work properly.
     - Having the player stop when it detects the inner box on the canvas.
