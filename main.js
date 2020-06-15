@@ -20,6 +20,7 @@ let maskImg = new Image();
 maskImg.src = "img/mask1.png";
 
 /* ------------------ Audio -------------------- */
+// Yashoma, Dave, W3 school, and stackoverflow helped me with coding the audio
 let menuMusic = document.createElement("audio");
 menuMusic.src = "audio/menu.mp3";
 
@@ -36,6 +37,7 @@ let gameOverSound = document.createElement("audio");
 gameOverSound.src = "audio/gameOver.wav"
 
 /* --------------- Characters ------------------- */
+// I learned how to render images from W3 and Mozilla
 function Character(x, y, width, height, img) {
     this.x = x;
     this.y = y;
@@ -53,15 +55,15 @@ function Character(x, y, width, height, img) {
 
 let player = new Character(475, 171, 40, 40, playerImg);
 
-// will travel up and down
+// Will travel up and down
 let virus1 = new Character(45, 0, 50, 50, virusImg);
 let virus2 = new Character(905, 550, 50, 50, virusImg);
 
-// will travel left and right
+// Will travel left and right
 let virus3 = new Character(472, 81, 50, 50, virusImg);
 let virus4 = new Character(472, 450, 50, 50, virusImg);
 
-// face masks (WON'T BE ABLE TO MOVE)
+// Face masks (WON'T BE ABLE TO MOVE)
 let mask1 = new Character(2, 2, 30, 20, maskImg);
 let mask2 = new Character(600, 50, 30, 20, maskImg);
 let mask3 = new Character(325, 525, 30, 20, maskImg);
@@ -73,7 +75,7 @@ let mask8 = new Character(968, 2, 30, 20, maskImg);
 let mask9 = new Character(968, 578, 30, 20, maskImg);
 let mask10 = new Character(325, 185, 30, 20, maskImg);
 
-
+// Renders all characters
 function init(){
     player.render();
     virus1.render();
@@ -118,6 +120,7 @@ let gameActive  = false;
 
 start.addEventListener("click", clickStart)
 
+// Game active = true is what makes the game only initiate when "Start is clicked"
 function clickStart(){
     gameActive = true;
     start.textContent = "GOOD LUCK!";
@@ -161,6 +164,7 @@ function detectWalls() {
     }
 }
 
+// Pete and Yashoma helped me a lot with writting this function
 function detectBox() {
     // checking top of box
     if (player.x < 893
@@ -253,6 +257,7 @@ function detectVirus4() {
     }
 }
 
+// Dave helped me with displaying the masks properly
 function collectMask1() {
     if (player.x + player.width > mask1.x
     && player.x < mask1.x + mask1.width
