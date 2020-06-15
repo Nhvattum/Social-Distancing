@@ -11,7 +11,7 @@
 
 
 ## Wireframe
-![Wireframe](image/Wireframe) 
+![Wireframe](img/Wireframe) 
 
 
 ## Technology Used
