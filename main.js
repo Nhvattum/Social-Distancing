@@ -22,19 +22,19 @@ maskImg.src = "img/mask1.png";
 /* ------------------ Audio -------------------- */
 // Yashoma, Dave, W3 school, and stackoverflow helped me with coding the audio
 let menuMusic = document.createElement("audio");
-menuMusic.src = "audio/menu.mp3";
+menuMusic.src = "Audio/menu.mp3";
 
 let gameMusic = document.createElement("audio");
-gameMusic.src = "audio/game.wav";
+gameMusic.src = "Audio/game.wav";
 
 let maskSound = document.createElement("audio");
-maskSound.src = "audio/maskSound.wav";
+maskSound.src = "Audio/maskSound.wav";
 
 let applauseSound = document.createElement("audio");
-applauseSound.src = "audio/applause.wav"
+applauseSound.src = "Audio/applause.wav"
 
 let gameOverSound = document.createElement("audio");
-gameOverSound.src = "audio/gameOver.wav"
+gameOverSound.src = "Audio/gameOver.wav"
 
 /* --------------- Characters ------------------- */
 // I learned how to render images from W3 and Mozilla
