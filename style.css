@@ -17,8 +17,6 @@ body {
 
 #socialDistancing {
     position: relative;
-    /* left: 110px;
-    top: 250px; */
     margin-top: -390px;
     margin-left: 100px;
     width: 800px;
@@ -47,7 +45,6 @@ body {
 #boxes {
     display: inline-flex;
     flex-direction: row;
-    /* align-content: space-around;  */
     justify-content: space-between;
     padding: 0px;
     width: 1000px;
