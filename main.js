@@ -19,6 +19,7 @@ virusImg.src = "img/virus.png";
 let maskImg = new Image();
 maskImg.src = "img/mask1.png";
 
+
 /* ------------------ Audio -------------------- */
 // Yashoma, Dave, W3 school, and stackoverflow helped me with coding the audio
 let menuMusic = document.createElement("audio");
