@@ -66,3 +66,30 @@ body {
     opacity: .25;
 }
 
+.buttons {
+    color: red;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    text-align: center;
+}
+
+.eachBtn {
+    height: 2em;
+    width: 2em;
+    font-size: 2em;
+    margin: 5px;
+    background-color: rgb(247, 7, 2);
+    color: rgb(14, 17, 17);
+    display: none;
+}
+
+#up {
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 500px) {
+    .eachBtn {
+        display: inline;
+    }
+  }

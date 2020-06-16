@@ -520,3 +520,31 @@ function restart() {
             menuMusic.pause();
     }
 }
+
+/* -------------- Mobile Devices ---------------- */
+
+let up = document.getElementById("up");
+let left = document.getElementById("left");
+let right = document.getElementById("right");
+let down = document.getElementById("down");
+
+function mobileUp() {
+    player.y-=6;
+}
+
+function mobileLeft() {
+    player.x-=6;
+}
+
+function mobileRight() {
+    player.x+=6;
+}
+
+function mobileDown() {
+    player.x-=6;
+}
+
+up.addEventListener("click", mobileUp);
+left.addEventListener("click", mobileLeft);
+right.addEventListener("click", mobileRight);
+down.addEventListener("click", mobileDown);
