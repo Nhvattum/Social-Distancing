@@ -528,6 +528,9 @@ let left = document.getElementById("left");
 let right = document.getElementById("right");
 let down = document.getElementById("down");
 
+let upClicked = false;
+
+
 function mobileUp() {
     player.y-=6;
 }
@@ -544,7 +547,17 @@ function mobileDown() {
     player.x-=6;
 }
 
-up.addEventListener("click", mobileUp);
-left.addEventListener("click", mobileLeft);
-right.addEventListener("click", mobileRight);
-down.addEventListener("click", mobileDown);
+up.addEventListener("mousedown", function(e) {
+    let upLoop = setInterval(mobileUp, 60);
+});
+
+
+up.addEventListener("touchend", function(e) {
+    clearInterval(upLoop);
+})
+
+
+
+left.addEventListener("mousedown", mobileLeft);
+right.addEventListener("mousedown", mobileRight);
+down.addEventListener("mousedown", mobileDown);
