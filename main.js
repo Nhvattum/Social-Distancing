@@ -41,29 +41,23 @@ gameOverSound.src = "Audio/gameOver.wav"
 function Character(x, y, width, height, img) {
     this.x = x;
     this.y = y;
-    // this.color = color;
     this.width = width;
     this.height = height;
     this.alive = true;
     this.img = img;
     this.render = function() {
-        // ctx.fillStyle = this.color;
-        // ctx.fillRect(this.x, this.y, this.width, this.height)
         ctx.drawImage(this.img, this.x, this.y)
     }
 }
 
 let player = new Character(475, 171, 40, 40, playerImg);
 
-// Will travel up and down
 let virus1 = new Character(45, 0, 50, 50, virusImg);
 let virus2 = new Character(905, 550, 50, 50, virusImg);
 
-// Will travel left and right
 let virus3 = new Character(472, 81, 50, 50, virusImg);
 let virus4 = new Character(472, 450, 50, 50, virusImg);
 
-// Face masks (WON'T BE ABLE TO MOVE)
 let mask1 = new Character(2, 2, 30, 20, maskImg);
 let mask2 = new Character(600, 50, 30, 20, maskImg);
 let mask3 = new Character(325, 525, 30, 20, maskImg);
@@ -130,10 +124,8 @@ function playingGame() {
     if (gameActive) {
         gameMusic.play();
         ctx.clearRect(0, 0, game.width, game.height);
-        // console.log(player.x, player.y);
         init();
         moveVirus();
-        console.log(score);
         scoreBox.textContent = "SCORE: " + score;
         if (player.alive) {
             detectCharacters();
@@ -151,16 +143,12 @@ function playingGame() {
 function detectWalls() {
     if (player.x < 0) {
         player.x = 0;
-        console.log("Outside the border");
     } else if (player.x + player.width > 1000) {
         player.x = 1000 - player.width;
-        console.log("Outside the border");
     } else if (player.y < 0) {
         player.y = 0;
-        console.log("Outside the border");
     } else if (player.y + player.height > 600) {
         player.y = 560;
-        console.log("Outside the border");
     }
 }
 
@@ -172,7 +160,6 @@ function detectBox() {
         && player.y > 171
         && player.y < 300) {
             player.y = 171;
-            console.log("crossed TOP BOX border");
 
         // checking bottom of box
     } else if (player.x < 893
@@ -180,7 +167,6 @@ function detectBox() {
         && player.y < 365
         && player.y > 300) {
             player.y = 365;
-            console.log("crossed BOTTOM BOX border")
 
         // checking left side of box
     } else if (player.y > 171
@@ -188,7 +174,6 @@ function detectBox() {
         && player.x > 59
         && player.x < 500) {
             player.x = 59;
-            console.log("crossed LEFT BOX border")
 
         // checking right side of box
     } else if (player.y > 171
@@ -265,7 +250,6 @@ function collectMask1() {
     && player.y + player.height > mask1.y
     && mask1.alive) {
     
-        console.log("MASK 1 collected!! 🤿")
         mask1.alive = false
         maskSound.play();
         score = score + 10
@@ -279,7 +263,6 @@ function collectMask2() {
     && player.y + player.height > mask2.y
     && mask2.alive) {
 
-        console.log("MASK 2 collected!! 🤿")
         mask2.alive = false
         maskSound.play();
         score = score + 10
@@ -292,7 +275,6 @@ function collectMask3() {
     && player.y + player.height > mask3.y
     && mask3.alive) {
     
-        console.log("MASK 3 collected!! 🤿")
         mask3.alive = false
         maskSound.play();
         score = score + 10
@@ -305,7 +287,6 @@ function collectMask4() {
     && player.y + player.height > mask4.y
     && mask4.alive) {
     
-        console.log("MASK 4 collected!! 🤿")
         mask4.alive = false
         maskSound.play();
         score = score + 10
@@ -318,7 +299,6 @@ function collectMask5() {
     && player.y + player.height > mask5.y
     && mask5.alive) {
     
-        console.log("MASK 5 collected!! 🤿")
         mask5.alive = false
         maskSound.play();
         score = score + 10
@@ -331,7 +311,6 @@ function collectMask6() {
     && player.y + player.height > mask6.y
     && mask6.alive) {
     
-        console.log("MASK 6 collected!! 🤿")
         mask6.alive = false
         maskSound.play();
         score = score + 10
@@ -344,7 +323,6 @@ function collectMask7() {
     && player.y + player.height > mask7.y
     && mask7.alive) {
     
-        console.log("MASK 7 collected!! 🤿")
         mask7.alive = false
         maskSound.play();
         score = score + 10
@@ -357,7 +335,6 @@ function collectMask8() {
     && player.y + player.height > mask8.y
     && mask8.alive) {
     
-        console.log("MASK 8 collected!! 🤿")
         mask8.alive = false
         maskSound.play();
         score = score + 10
@@ -370,7 +347,6 @@ function collectMask9() {
     && player.y + player.height > mask9.y
     && mask9.alive) {
     
-        console.log("MASK 9 collected!! 🤿")
         mask9.alive = false
         maskSound.play();
         score = score + 10;
@@ -383,7 +359,6 @@ function collectMask10() {
     && player.y + player.height > mask10.y
     && mask10.alive) {
     
-        console.log("MASK 10 collected!! 🤿")
         mask10.alive = false
         maskSound.play();
         score = score + 10;
@@ -454,7 +429,6 @@ function moveVirus() {
 /* ---------- Win/Lose Conditions ----------- */
 function endGame() {
     clearInterval(gameLoop);
-    console.log('You died!');
     gameMusic.pause();
     gameOverSound.play();
     menuMusic.play();
@@ -465,7 +439,6 @@ function endGame() {
 function gameWon() {
     if (player.alive && score == 100){
         clearInterval(gameLoop);
-        console.log("You Win!");
         gameMusic.pause();
         applauseSound.play();
         menuMusic.play();
@@ -522,42 +495,38 @@ function restart() {
 }
 
 /* -------------- Mobile Devices ---------------- */
+// I left this in because I want to continue to try and implement it.
+// The problem I have been facing is that when you hold down on a phone, it opens a menu instead of continuing to press the button
 
-let up = document.getElementById("up");
-let left = document.getElementById("left");
-let right = document.getElementById("right");
-let down = document.getElementById("down");
+// let up = document.getElementById("up");
+// let upLoop;
+// let left = document.getElementById("left");
+// let right = document.getElementById("right");
+// let down = document.getElementById("down");
 
-let upClicked = false;
+// function mobileUp() {
+//     player.y-=6;
+// }
 
+// function mobileLeft() {
+//     player.x-=6;
+// }
 
-function mobileUp() {
-    player.y-=6;
-}
+// function mobileRight() {
+//     player.x+=6;
+// }
 
-function mobileLeft() {
-    player.x-=6;
-}
+// function mobileDown() {
+//     player.y+=6;
+// }
 
-function mobileRight() {
-    player.x+=6;
-}
-
-function mobileDown() {
-    player.x-=6;
-}
-
-up.addEventListener("mousedown", function(e) {
-    let upLoop = setInterval(mobileUp, 60);
-});
-
-
-up.addEventListener("touchend", function(e) {
-    clearInterval(upLoop);
-})
+// up.addEventListener("mousedown", function(e) {
+//     mobileUp();
+//     upLoop = setInterval(mobileUp, 60);
+// });
 
 
+// up.addEventListener("mouseup", function(e) {
+//     clearInterval(upLoop);
+// })
 
-left.addEventListener("mousedown", mobileLeft);
-right.addEventListener("mousedown", mobileRight);
-down.addEventListener("mousedown", mobileDown);

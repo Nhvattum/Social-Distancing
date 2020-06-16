@@ -51,6 +51,7 @@ Everything in this game was coded with HTML, CSS, and JavaScript with the game a
 - Images cleared themselves from the canvas, but instead of totally going away, they turned invisable and would still increase the score everytime you crossed over that space.
 - I tried for a long time, but couldn't get music to autoplay when the page loads.
 - After I changed the player and viruses from boxes to sprites, they no longer detected the walls of the inner box.
+- I really wanted to implement a mobile friendly version of the game, but the issue I kept running into is that if you hold down the direction buttons, the phone opens a menu.  Similarly, if you click the buttons fast, the phone zooms in.  I really want to finish this, so I left the code commented out in my files so I can finish it later.
 
 
 ## MVP
@@ -72,6 +73,6 @@ Everything in this game was coded with HTML, CSS, and JavaScript with the game a
 
 
 ## Final Thoughts
-I am so happy with the results of this game.  Before creating it, I felt very behind and like I wasn't understanding much of the material, but this game helped me realize how far I have come and how much I have actually learned.  The greatest thing that this game taught me is how to look up answers when I am stuck.  There were many times that I was having issues with my code working properly, so I would go into a zoom room for help, but I would end up solving the problem on my own before the TA even got to me.
+I am very happy with the results of this game.  Before creating it, I felt very behind and like I wasn't understanding much of the material, but this game helped me realize how far I have come and how much I have actually learned.  The greatest thing that this game taught me is how to look up answers when I am stuck.  There were many times that I was having issues with my code working properly, so I would go into a zoom room for help, but I would end up solving the problem on my own before the TA even got to me.
 
 I think the thing that I need to work on more is writing simpler code from the beginning.  My initial plan was to hard code everything to make sure I could have the game working properly in the given time, and then refactor later to make the code more simple and easier to read.  What actually ended up happening is I hard coded everything, ended up with 500+ lines of code, and then I was too scared to refactor because when I would change one thing, it effected all of my code.  If I would have spent more time using arrays, switches, and iterators at the beginning, it would have cleaned up a lot of my big chunks of unnecessary code.

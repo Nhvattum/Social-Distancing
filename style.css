@@ -66,6 +66,8 @@ body {
     opacity: .25;
 }
 
+/* I left this in to implement for mobile later.  See README.md for more detail
+
 .buttons {
     color: red;
     width: 200px;
@@ -92,4 +94,4 @@ body {
     .eachBtn {
         display: inline;
     }
-  }
+  } */
